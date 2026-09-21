@@ -35,23 +35,17 @@ export function ProductShowcaseSection() {
                 HR Shastri — Company dashboard
               </span>
             </div>
-            <div className="relative max-h-[min(520px,70vh)] overflow-hidden bg-surface-1">
-              <picture>
-              <source
-                type="image/webp"
-                srcSet="/images/product-showcase-dashboard-768.webp 768w, /images/product-showcase-dashboard.webp 1024w"
-                sizes="(min-width: 1280px) 1152px, 100vw"
-              />
+            <div className="relative bg-surface-1">
               <img
                 src={SHOWCASE_IMAGE}
-                alt="HR Shastri dashboard showing mark attendance, staff metrics, employee list, and calendar for HR and payroll teams"
-                className="block w-full object-cover object-left-top"
+                alt="One dashboard for HR, payroll, and people insights"
+                title="One dashboard for HR, payroll, and people insights"
+                className="block h-auto w-full"
                 loading="lazy"
                 decoding="async"
-                width={1024}
-                height={506}
+                width={1280}
+                height={720}
               />
-            </picture>
             </div>
           </div>
           <p className="mt-4 text-center text-sm text-slate-400">

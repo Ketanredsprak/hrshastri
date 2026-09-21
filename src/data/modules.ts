@@ -22,7 +22,7 @@ export const DETAILED_MODULES: ModuleDetail[] = [
       'Documents, letters, and statutory configuration per employee',
       'Web and mobile login control with exit status tracking',
     ],
-    imageAlt: 'Employee database dashboard preview',
+    imageAlt: 'Employee Database',
   },
   {
     id: 'attendance',
@@ -33,7 +33,7 @@ export const DETAILED_MODULES: ModuleDetail[] = [
       'Week-offs, shifts, and advanced geofencing reports',
       'Late-coming and monthly attendance analytics',
     ],
-    imageAlt: 'Attendance tracking module preview',
+    imageAlt: 'Attendance Tracking',
   },
   {
     id: 'leave',
@@ -44,7 +44,7 @@ export const DETAILED_MODULES: ModuleDetail[] = [
       'Manager approval queues and automated monthly credits',
       'Extra/unpaid day handling connected to payroll runs',
     ],
-    imageAlt: 'Leave management module preview',
+    imageAlt: 'Leave Management',
   },
   {
     id: 'payroll',

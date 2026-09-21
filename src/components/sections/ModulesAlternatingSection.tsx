@@ -6,7 +6,35 @@ import { SectionHeading } from '../ui/SectionHeading'
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/Button'
 
-function ModuleVisual({ title, index }: { title: string; index: number }) {
+function ModuleVisual({
+  title,
+  index,
+  image,
+}: {
+  title: string
+  index: number
+  image?: { src: string; webp: string; width: number; height: number }
+}) {
+  if (image) {
+    return (
+      <div className="overflow-hidden rounded-3xl border border-border-subtle bg-white shadow-card">
+        <picture>
+          <source type="image/webp" srcSet={image.webp} />
+          <img
+            src={image.src}
+            alt={title}
+            title={title}
+            width={image.width}
+            height={image.height}
+            className="block h-auto w-full"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    )
+  }
+
   const hues = ['from-brand-purple/20 to-brand-magenta/20', 'from-brand-blue/20 to-brand-purple/20']
   return (
     <div
@@ -27,6 +55,27 @@ function ModuleVisual({ title, index }: { title: string; index: number }) {
       </div>
     </div>
   )
+}
+
+const MODULE_IMAGES: Record<string, { src: string; webp: string; width: number; height: number }> = {
+  'employee-database': {
+    src: '/images/hr-shastri-employee-database.png',
+    webp: '/images/hr-shastri-employee-database.webp',
+    width: 1024,
+    height: 505,
+  },
+  attendance: {
+    src: '/images/hr-shastri-attendance-tracking.png',
+    webp: '/images/hr-shastri-attendance-tracking.webp',
+    width: 1024,
+    height: 501,
+  },
+  leave: {
+    src: '/images/hr-shastri-leave-management.png',
+    webp: '/images/hr-shastri-leave-management.webp',
+    width: 1024,
+    height: 505,
+  },
 }
 
 type ModulesAlternatingSectionProps = {
@@ -57,7 +106,7 @@ export function ModulesAlternatingSection({ limit }: ModulesAlternatingSectionPr
                 transition={{ duration: 0.5 }}
                 className={`grid items-center gap-8 sm:gap-10 lg:grid-cols-2 ${reversed ? 'lg:[&>*:first-child]:order-2' : ''}`}
               >
-                <ModuleVisual title={module.title} index={index} />
+                <ModuleVisual title={module.title} index={index} image={MODULE_IMAGES[module.id]} />
                 <div className="min-w-0">
                   <h3 className="text-xl font-bold text-brand-navy sm:text-2xl md:text-3xl">{module.title}</h3>
                   <p className="mt-2 text-base text-muted sm:mt-3 sm:text-lg">{module.subtitle}</p>
