@@ -10,7 +10,7 @@ export const SITE = {
   address:
     '5th Floor, Darshanam Oxypark, Vasna-Bhayli Main Road, Vadodara – 390007, Gujarat, India',
   hours: 'Monday - Saturday 10AM to 7PM IST',
-  loginUrl: 'https://hrshastri.com/login',
+  loginUrl: 'https://app.hrshastri.com',
   demoUrl: '/contact?intent=demo',
   trialUrl: '/contact?intent=trial',
   playStoreUrl:

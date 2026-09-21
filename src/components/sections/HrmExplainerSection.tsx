@@ -12,7 +12,7 @@ export function HrmExplainerSection() {
             <SectionHeading
               align="left"
               eyebrow="About ourselves"
-              title="What is an HRM system?"
+              title="What is an HRMS system?"
               description="A Human Resource Management system is software that automates and streamlines HR processes — employee data, payroll, recruitment, performance, training, and reporting — to improve efficiency and accuracy."
             />
             <p className="text-sm leading-relaxed text-muted md:text-base">
