@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { PageHero } from '../components/marketing/PageHero'
 import { SEO } from '../components/seo/SEO'
 import { Container } from '../components/ui/Container'
+import { MotionReveal } from '../components/ui/MotionReveal'
 import { SITE } from '../lib/constants'
 
 export default function TermsOfUsePage() {
@@ -19,6 +20,7 @@ export default function TermsOfUsePage() {
       />
       <section className="section-padding bg-white">
         <Container>
+          <MotionReveal>
           <article className="mx-auto max-w-3xl space-y-8 text-sm leading-relaxed text-muted md:text-base">
             <section>
               <h2 className="text-xl font-bold text-brand-ink">Acceptance of terms</h2>
@@ -94,6 +96,7 @@ export default function TermsOfUsePage() {
               </p>
             </section>
           </article>
+          </MotionReveal>
         </Container>
       </section>
     </>

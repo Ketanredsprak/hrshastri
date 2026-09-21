@@ -2,6 +2,7 @@ import { Check } from 'lucide-react'
 import { PRICING_PLANS } from '../../data/pricing'
 import { Container } from '../ui/Container'
 import { Button } from '../ui/Button'
+import { MotionReveal, RevealGroup, RevealItem } from '../ui/MotionReveal'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Link } from 'react-router-dom'
 
@@ -13,16 +14,18 @@ export function PricingSection({ compact = false }: PricingSectionProps) {
   return (
     <section className="section-padding bg-white" id="pricing">
       <Container>
-        <SectionHeading
-          eyebrow="Pricing"
-          title="Choose a plan that scales with your headcount"
-          description="Upgrade when you grow — flexible user and employee limits with transparent modules."
-        />
-        <div className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <MotionReveal>
+          <SectionHeading
+            eyebrow="Pricing"
+            title="Choose a plan that scales with your headcount"
+            description="Upgrade when you grow — flexible user and employee limits with transparent modules."
+          />
+        </MotionReveal>
+        <RevealGroup className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {PRICING_PLANS.map((plan) => (
+            <RevealItem key={plan.name}>
             <div
-              key={plan.name}
-              className={`relative rounded-2xl border p-5 shadow-card sm:rounded-3xl sm:p-6 md:p-8 ${
+              className={`relative h-full rounded-2xl border p-5 shadow-card sm:rounded-3xl sm:p-6 md:p-8 ${
                 plan.highlighted
                   ? 'border-brand-purple/40 bg-gradient-to-b from-brand-purple/5 to-white ring-2 ring-brand-purple/20'
                   : 'border-slate-100 bg-white'
@@ -59,8 +62,9 @@ export function PricingSection({ compact = false }: PricingSectionProps) {
                 </Button>
               </div>
             </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
         {compact ? (
           <p className="mt-8 text-center text-sm">
             <Link to="/pricing" className="font-semibold text-brand-purple hover:text-brand-magenta">

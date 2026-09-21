@@ -6,6 +6,7 @@ export const SITE = {
   email: 'info@hrshastri.com',
   phone: '+91 915 707 5570',
   phoneHref: 'tel:+919157075570',
+  whatsappUrl: 'https://wa.me/919157075570',
   address:
     '5th Floor, Darshanam Oxypark, Vasna-Bhayli Main Road, Vadodara – 390007, Gujarat, India',
   hours: 'Monday - Saturday 10AM to 7PM IST',

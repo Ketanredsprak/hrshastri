@@ -75,31 +75,31 @@ function PhoneMock({ reduced }: { reduced: boolean }) {
       <div className="pointer-events-none absolute -right-4 top-10 h-32 w-32 rounded-full bg-brand-magenta/20 blur-2xl sm:-right-6 sm:h-40 sm:w-40" aria-hidden />
 
       <motion.div
-        className="absolute -right-4 top-10 hidden w-[160px] rotate-[8deg] rounded-[2rem] border-[8px] border-white/20 bg-white/10 p-1.5 opacity-50 backdrop-blur sm:-right-6 sm:block sm:w-[200px]"
+        className="absolute -right-4 top-10 hidden w-[160px] rotate-[8deg] rounded-[2rem] border-[8px] border-white/80 bg-white p-0 opacity-40 shadow-lg sm:-right-6 sm:block sm:w-[200px]"
         aria-hidden
         animate={reduced ? undefined : { y: [0, 8, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
       >
-        <div className="h-56 overflow-hidden rounded-[1.4rem]">
+        <div className="aspect-[9/19] overflow-hidden rounded-[1.35rem] bg-slate-100">
           <img
             src="/images/mobile-app-screen.png"
             alt=""
-            className="h-full w-full object-cover object-top opacity-70"
+            className="h-full w-full scale-[1.02] object-cover object-top"
           />
         </div>
       </motion.div>
 
       <motion.div
-        className="relative z-10 overflow-hidden rounded-[2.25rem] border-[10px] border-[#111827] bg-[#111827] shadow-lift ring-1 ring-white/10"
+        className="relative z-10 rounded-[2.4rem] border-[11px] border-white bg-white p-0 shadow-[0_24px_48px_rgba(0,0,0,0.4)] ring-1 ring-black/20"
         animate={reduced ? undefined : { y: [0, -10, 0] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <div className="absolute left-1/2 top-2.5 z-20 h-4 w-[88px] -translate-x-1/2 rounded-full bg-black" />
-        <div className="overflow-hidden rounded-[1.55rem] bg-white">
+        {/* Screen only — no notch / camera */}
+        <div className="aspect-[9/19] overflow-hidden rounded-[1.65rem] bg-[#0b1f4a]">
           <img
             src="/images/mobile-app-screen.png"
             alt="HR Shastri mobile app — clock in, leave, and announcements"
-            className="block h-auto w-full"
+            className="h-full w-full scale-[1.02] object-cover object-top"
             loading="lazy"
             width={320}
             height={666}

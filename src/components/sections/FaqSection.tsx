@@ -2,6 +2,7 @@ import { FAQ_ITEMS } from '../../data/faq'
 import { Container } from '../ui/Container'
 import { Accordion } from '../ui/Accordion'
 import { Badge } from '../ui/Badge'
+import { MotionReveal } from '../ui/MotionReveal'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Link } from 'react-router-dom'
 
@@ -18,7 +19,7 @@ export function FaqSection({ limit, layout = 'center' }: FaqSectionProps) {
       <section className="section-padding bg-white" id="faq">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-4 lg:pt-2">
+            <MotionReveal className="lg:col-span-4 lg:pt-2">
               <Badge variant="blue">FAQ</Badge>
               <h2 className="mt-4 text-section font-bold text-brand-ink">
                 Answers for HR, finance, and leadership
@@ -35,10 +36,10 @@ export function FaqSection({ limit, layout = 'center' }: FaqSectionProps) {
                   View all FAQs →
                 </Link>
               ) : null}
-            </div>
-            <div className="lg:col-span-8">
+            </MotionReveal>
+            <MotionReveal className="lg:col-span-8" delay={0.08}>
               <Accordion items={items} />
-            </div>
+            </MotionReveal>
           </div>
         </Container>
       </section>
@@ -48,12 +49,14 @@ export function FaqSection({ limit, layout = 'center' }: FaqSectionProps) {
   return (
     <section className="section-padding bg-surface-1" id="faq">
       <Container>
-        <SectionHeading
-          eyebrow="FAQ"
-          title="Answers for HR, finance, and leadership"
-          description="What is HRM? HR Shastri automates employee data, payroll, recruitment, performance, training, and reporting for accuracy and efficiency."
-        />
-        <div className="mx-auto max-w-3xl">
+        <MotionReveal>
+          <SectionHeading
+            eyebrow="FAQ"
+            title="Answers for HR, finance, and leadership"
+            description="What is HRM? HR Shastri automates employee data, payroll, recruitment, performance, training, and reporting for accuracy and efficiency."
+          />
+        </MotionReveal>
+        <MotionReveal className="mx-auto max-w-3xl" delay={0.08}>
           <Accordion items={items} />
           {limit ? (
             <p className="mt-6 text-center text-sm">
@@ -62,7 +65,7 @@ export function FaqSection({ limit, layout = 'center' }: FaqSectionProps) {
               </Link>
             </p>
           ) : null}
-        </div>
+        </MotionReveal>
       </Container>
     </section>
   )

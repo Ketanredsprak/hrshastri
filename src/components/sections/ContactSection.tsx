@@ -5,6 +5,7 @@ import { submitContactForm } from '../../lib/contact-api'
 import { SITE, SOCIAL } from '../../lib/constants'
 import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
+import { MotionReveal, RevealGroup, RevealItem } from '../ui/MotionReveal'
 import { Input } from '../ui/Input'
 
 type ContactSectionProps = {
@@ -79,17 +80,17 @@ export function ContactSection({ showMap = true, showHeading = true }: ContactSe
     <section className="section-padding bg-surface-1" id="contact">
       <Container>
         {showHeading ? (
-          <div className="mb-12 max-w-2xl">
+          <MotionReveal className="mb-12 max-w-2xl">
             <h2 className="text-section font-bold text-brand-ink">Contact & demo requests</h2>
             <p className="mt-4 text-lead text-muted">
               Still have questions? Call us — we will be happy to help. Our team responds during
               business hours listed below.
             </p>
-          </div>
+          </MotionReveal>
         ) : null}
 
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-          <div className="space-y-6">
+        <RevealGroup className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+          <RevealItem className="space-y-6">
             <div className="rounded-3xl border border-border-subtle bg-white p-6 shadow-card md:p-8">
               <h3 className="text-xl font-bold text-brand-ink">Talk to HR Shastri</h3>
               <p className="mt-2 text-sm text-muted">
@@ -140,9 +141,9 @@ export function ContactSection({ showMap = true, showHeading = true }: ContactSe
                 />
               </div>
             ) : null}
-          </div>
+          </RevealItem>
 
-          <div className="rounded-3xl border border-border-subtle bg-white p-6 shadow-card md:p-8">
+          <RevealItem className="rounded-3xl border border-border-subtle bg-white p-6 shadow-card md:p-8">
             <h3 className="text-xl font-bold text-brand-ink">Book a demo or send a message</h3>
             {submitted ? (
               <p className="mt-6 rounded-xl border border-success/20 bg-emerald-50 p-4 text-sm text-emerald-900">
@@ -203,8 +204,8 @@ export function ContactSection({ showMap = true, showHeading = true }: ContactSe
                 </Button>
               </form>
             )}
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
       </Container>
     </section>
   )

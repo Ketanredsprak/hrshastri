@@ -1,4 +1,5 @@
 import { Container } from '../ui/Container'
+import { RevealGroup, RevealItem } from '../ui/MotionReveal'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Button } from '../ui/Button'
 
@@ -6,8 +7,8 @@ export function HrmExplainerSection() {
   return (
     <section className="section-padding bg-surface">
       <Container>
-        <div className="grid items-center gap-10 rounded-3xl border border-slate-100 bg-white p-8 shadow-card lg:grid-cols-2 lg:p-12">
-          <div>
+        <RevealGroup className="grid items-center gap-10 rounded-3xl border border-slate-100 bg-white p-8 shadow-card lg:grid-cols-2 lg:p-12">
+          <RevealItem>
             <SectionHeading
               align="left"
               eyebrow="About ourselves"
@@ -25,7 +26,8 @@ export function HrmExplainerSection() {
                 Read FAQs
               </Button>
             </div>
-          </div>
+          </RevealItem>
+          <RevealItem>
           <ul className="space-y-4 text-sm text-slate-700 md:text-base">
             {[
               'Single employee record linked to attendance, leave, salary, and exit',
@@ -40,7 +42,8 @@ export function HrmExplainerSection() {
               </li>
             ))}
           </ul>
-        </div>
+          </RevealItem>
+        </RevealGroup>
       </Container>
     </section>
   )

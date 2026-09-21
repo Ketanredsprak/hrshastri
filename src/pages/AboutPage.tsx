@@ -3,6 +3,7 @@ import { CtaBand } from '../components/marketing/CtaBand'
 import { SEO } from '../components/seo/SEO'
 import { Card } from '../components/ui/Card'
 import { Container } from '../components/ui/Container'
+import { MotionReveal, RevealGroup, RevealItem } from '../components/ui/MotionReveal'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { Button } from '../components/ui/Button'
 
@@ -39,49 +40,59 @@ export default function AboutPage() {
         description="Industry experts collaborated to build a robust HRMS that streamlines workforce management, talent acquisition, and employee engagement."
       />
       <section className="section-padding bg-white">
-        <Container className="grid gap-10 lg:grid-cols-2">
-          <Card variant="soft">
-            <h3 className="text-2xl font-bold text-brand-ink">Who we are</h3>
-            <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
-              Introducing HR Shastri, a dedicated team of 30+ HR experts with over a decade of
-              experience, committed to enhancing and simplifying Human Resource Management Systems.
-              With a proven track record of serving 50+ clients across Manufacturing, Service, Stock
-              Markets, Immigration, and more, we deliver cutting-edge solutions tailored to your
-              unique HR needs.
-            </p>
-          </Card>
-          <Card variant="soft">
-            <h3 className="text-2xl font-bold text-brand-ink">What we offer</h3>
-            <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
-              Our end-to-end customized HR solutions provide a comprehensive approach from
-              recruitment and onboarding to performance management and payroll. Our expert team
-              optimizes every aspect of your HR processes so you can focus on core business
-              priorities.
-            </p>
-            <Button to="/contact?intent=demo" className="mt-6">
-              Talk to our team
-            </Button>
-          </Card>
+        <Container>
+          <RevealGroup className="grid gap-10 lg:grid-cols-2">
+            <RevealItem>
+              <Card variant="soft">
+                <h3 className="text-2xl font-bold text-brand-ink">Who we are</h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
+                  Introducing HR Shastri, a dedicated team of 30+ HR experts with over a decade of
+                  experience, committed to enhancing and simplifying Human Resource Management Systems.
+                  With a proven track record of serving 50+ clients across Manufacturing, Service, Stock
+                  Markets, Immigration, and more, we deliver cutting-edge solutions tailored to your
+                  unique HR needs.
+                </p>
+              </Card>
+            </RevealItem>
+            <RevealItem>
+              <Card variant="soft">
+                <h3 className="text-2xl font-bold text-brand-ink">What we offer</h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
+                  Our end-to-end customized HR solutions provide a comprehensive approach from
+                  recruitment and onboarding to performance management and payroll. Our expert team
+                  optimizes every aspect of your HR processes so you can focus on core business
+                  priorities.
+                </p>
+                <Button to="/contact?intent=demo" className="mt-6">
+                  Talk to our team
+                </Button>
+              </Card>
+            </RevealItem>
+          </RevealGroup>
         </Container>
       </section>
       <section className="section-padding bg-surface-1">
         <Container>
-          <SectionHeading
-            eyebrow="Values"
-            title="Our core values"
-            description="Customer delight, adaptability, efficiency, data integrity, and collaboration shape every release of HR Shastri."
-          />
-          <div className="grid gap-5 md:grid-cols-2">
+          <MotionReveal>
+            <SectionHeading
+              eyebrow="Values"
+              title="Our core values"
+              description="Customer delight, adaptability, efficiency, data integrity, and collaboration shape every release of HR Shastri."
+            />
+          </MotionReveal>
+          <RevealGroup className="grid gap-5 md:grid-cols-2">
             {values.map((value, index) => (
-              <Card key={value.title} hover>
-                <span className="text-gradient-brand text-2xl font-extrabold">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <h3 className="mt-2 text-xl font-bold text-brand-ink">{value.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{value.text}</p>
-              </Card>
+              <RevealItem key={value.title}>
+                <Card hover>
+                  <span className="text-gradient-brand text-2xl font-extrabold">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="mt-2 text-xl font-bold text-brand-ink">{value.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{value.text}</p>
+                </Card>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </Container>
       </section>
       <CtaBand />

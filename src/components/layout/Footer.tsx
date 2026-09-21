@@ -1,6 +1,7 @@
 import type { SVGProps } from 'react'
 import { Link } from 'react-router-dom'
 import { Container } from '../ui/Container'
+import { MotionReveal, RevealGroup, RevealItem } from '../ui/MotionReveal'
 import { NAV_LINKS, SITE, SOCIAL } from '../../lib/constants'
 
 const footerSections = {
@@ -116,8 +117,8 @@ export function Footer() {
   return (
     <footer className="bg-brand-navy text-slate-300/95">
       <Container className="section-padding pb-10">
-        <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+        <RevealGroup className="grid gap-10 lg:grid-cols-12">
+          <RevealItem className="lg:col-span-4">
             <img
               src="/logo.png"
               alt={SITE.name}
@@ -166,9 +167,9 @@ export function Footer() {
                 <FooterAppStoreBadge />
               </div>
             </div>
-          </div>
+          </RevealItem>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-3 lg:col-span-8 xl:grid-cols-6">
+          <RevealItem className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-3 lg:col-span-8 xl:grid-cols-6">
             {Object.entries(footerSections).map(([title, links]) => (
               <div key={title} className="min-w-0">
                 <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-white">
@@ -199,10 +200,10 @@ export function Footer() {
                 </ul>
               </div>
             ))}
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+        <MotionReveal className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
@@ -213,7 +214,7 @@ export function Footer() {
               </Link>
             ))}
           </div>
-        </div>
+        </MotionReveal>
       </Container>
     </footer>
   )

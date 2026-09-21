@@ -1,6 +1,7 @@
 import { PageHero } from '../components/marketing/PageHero'
 import { SEO } from '../components/seo/SEO'
 import { Container } from '../components/ui/Container'
+import { MotionReveal } from '../components/ui/MotionReveal'
 
 const sections: { title: string; paragraphs: string[] }[] = [
   {
@@ -97,6 +98,7 @@ export default function PrivacyPolicyPage() {
       />
       <section className="section-padding bg-white">
         <Container>
+          <MotionReveal>
           <article className="mx-auto max-w-3xl space-y-10">
             {sections.map((section) => (
               <section key={section.title}>
@@ -111,6 +113,7 @@ export default function PrivacyPolicyPage() {
               </section>
             ))}
           </article>
+          </MotionReveal>
         </Container>
       </section>
     </>
