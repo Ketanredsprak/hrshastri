@@ -34,51 +34,14 @@ export function CustomCursor() {
 
     document.documentElement.classList.add('has-custom-cursor')
 
-    const onMove = (e: MouseEvent) => {
-      mouse.current.x = e.clientX
-      mouse.current.y = e.clientY
-      setVisible(true)
-    }
-
-    const onLeave = () => setVisible(false)
-    const onEnter = () => setVisible(true)
-
-    const interactiveSelector =
-      'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor]'
-
-    const onOver = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement | null)?.closest?.(interactiveSelector)
-      if (!target) {
-        setMode('default')
-        setLabel('')
-        return
-      }
-      const custom = target.getAttribute('data-cursor')
-      if (custom) {
-        setMode('text')
-        setLabel(custom)
-      } else if (
-        target.matches('input, textarea, select') ||
-        (target as HTMLElement).isContentEditable
-      ) {
-        setMode('text')
-        setLabel('')
-      } else {
-        setMode('hover')
-        setLabel('')
-      }
-    }
-
-    window.addEventListener('mousemove', onMove, { passive: true })
-    document.addEventListener('mouseover', onOver, { passive: true })
-    document.documentElement.addEventListener('mouseleave', onLeave)
-    document.documentElement.addEventListener('mouseenter', onEnter)
+    const modeRef = { current: 'default' as CursorMode }
+    const labelStateRef = { current: '' }
+    const visibleRef = { current: false }
+    let running = false
 
     const tick = () => {
-      // Fast inner dot
       dot.current.x += (mouse.current.x - dot.current.x) * 0.35
       dot.current.y += (mouse.current.y - dot.current.y) * 0.35
-      // Lagging outer ring
       ring.current.x += (mouse.current.x - ring.current.x) * 0.12
       ring.current.y += (mouse.current.y - ring.current.y) * 0.12
 
@@ -92,9 +55,75 @@ export function CustomCursor() {
         labelRef.current.style.transform = `translate3d(${ring.current.x}px, ${ring.current.y}px, 0) translate(-50%, -50%)`
       }
 
+      const settled =
+        Math.abs(mouse.current.x - ring.current.x) < 0.4 &&
+        Math.abs(mouse.current.y - ring.current.y) < 0.4
+      if (settled) {
+        running = false
+        return
+      }
       raf.current = requestAnimationFrame(tick)
     }
-    raf.current = requestAnimationFrame(tick)
+
+    const start = () => {
+      if (running) return
+      running = true
+      raf.current = requestAnimationFrame(tick)
+    }
+
+    const onMove = (e: MouseEvent) => {
+      mouse.current.x = e.clientX
+      mouse.current.y = e.clientY
+      if (!visibleRef.current) {
+        visibleRef.current = true
+        setVisible(true)
+      }
+      start()
+    }
+
+    const onLeave = () => {
+      visibleRef.current = false
+      setVisible(false)
+    }
+    const onEnter = () => {
+      visibleRef.current = true
+      setVisible(true)
+    }
+
+    const interactiveSelector =
+      'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor]'
+
+    const applyMode = (nextMode: CursorMode, nextLabel: string) => {
+      if (modeRef.current === nextMode && labelStateRef.current === nextLabel) return
+      modeRef.current = nextMode
+      labelStateRef.current = nextLabel
+      setMode(nextMode)
+      setLabel(nextLabel)
+    }
+
+    const onOver = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement | null)?.closest?.(interactiveSelector)
+      if (!target) {
+        applyMode('default', '')
+        return
+      }
+      const custom = target.getAttribute('data-cursor')
+      if (custom) {
+        applyMode('text', custom)
+      } else if (
+        target.matches('input, textarea, select') ||
+        (target as HTMLElement).isContentEditable
+      ) {
+        applyMode('text', '')
+      } else {
+        applyMode('hover', '')
+      }
+    }
+
+    window.addEventListener('mousemove', onMove, { passive: true })
+    document.addEventListener('mouseover', onOver, { passive: true })
+    document.documentElement.addEventListener('mouseleave', onLeave)
+    document.documentElement.addEventListener('mouseenter', onEnter)
 
     return () => {
       document.documentElement.classList.remove('has-custom-cursor')
@@ -119,14 +148,13 @@ export function CustomCursor() {
       {/* Outer lagging ring */}
       <div
         ref={ringRef}
-        className={`absolute top-0 left-0 rounded-full border transition-[width,height,border-color,background-color,opacity] duration-200 ease-out will-change-transform ${
+        className={`absolute top-0 left-0 h-9 w-9 rounded-full border transition-[transform,border-color,background-color,opacity] duration-200 ease-out will-change-transform ${
           showLabel
-            ? 'h-16 w-16 border-brand-purple/40 bg-brand-purple/10'
+            ? 'scale-[1.78] border-brand-purple/40 bg-brand-purple/10'
             : hover
-              ? 'h-12 w-12 border-brand-blue/50 bg-brand-blue/5'
-              : 'h-9 w-9 border-brand-blue/35 bg-transparent'
+              ? 'scale-[1.33] border-brand-blue/50 bg-brand-blue/5'
+              : 'scale-100 border-brand-blue/35 bg-transparent'
         } ${visible ? 'opacity-100' : 'opacity-0'}`}
-        style={{ mixBlendMode: showLabel ? 'normal' : 'normal' }}
       />
 
       {/* Inner fast dot */}

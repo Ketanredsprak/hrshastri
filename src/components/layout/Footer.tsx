@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Container } from '../ui/Container'
 import { MotionReveal, RevealGroup, RevealItem } from '../ui/MotionReveal'
 import { NAV_LINKS, SITE, SOCIAL } from '../../lib/constants'
+import { BrandLogo } from './BrandLogo'
 
 const footerSections = {
   Company: [
@@ -119,12 +120,7 @@ export function Footer() {
       <Container className="section-padding pb-10">
         <RevealGroup className="grid gap-10 lg:grid-cols-12">
           <RevealItem className="lg:col-span-4">
-            <img
-              src="/logo.png"
-              alt={SITE.name}
-              className="mb-4 h-9 w-auto max-w-[160px] object-contain brightness-0 invert sm:h-10"
-              loading="lazy"
-            />
+            <BrandLogo className="mb-4 h-9 w-auto max-w-[160px] object-contain brightness-0 invert sm:h-10" />
             <p className="max-w-sm text-sm leading-relaxed">
               Complete HR, payroll, and people operations — built for Indian businesses. From hire
               to retire in one secure cloud platform.

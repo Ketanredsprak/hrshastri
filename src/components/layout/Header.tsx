@@ -5,6 +5,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { NAV_LINKS, SITE } from '../../lib/constants'
+import { BrandLogo } from './BrandLogo'
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -12,7 +13,10 @@ export function Header() {
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
+    const onScroll = () => {
+      const next = window.scrollY > 12
+      setScrolled((prev) => (prev === next ? prev : next))
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -50,11 +54,9 @@ export function Header() {
             className="flex min-w-0 shrink-0 items-center"
             onClick={() => setOpen(false)}
           >
-            <img
-              src="/logo.png"
-              alt={SITE.name}
+            <BrandLogo
+              priority
               className="h-8 w-auto max-w-[140px] object-contain sm:h-10 sm:max-w-none md:h-11"
-              loading="eager"
             />
           </Link>
 

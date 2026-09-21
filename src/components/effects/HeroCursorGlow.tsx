@@ -25,12 +25,7 @@ export function HeroCursorGlow() {
     let bx = mx
     let by = my
     let raf = 0
-
-    const onMove = (e: MouseEvent) => {
-      const rect = wrap.getBoundingClientRect()
-      mx = (e.clientX - rect.left) / rect.width
-      my = (e.clientY - rect.top) / rect.height
-    }
+    let running = false
 
     const tick = () => {
       ax += (mx - ax) * 0.06
@@ -44,14 +39,32 @@ export function HeroCursorGlow() {
       if (bRef.current) {
         bRef.current.style.transform = `translate3d(${(bx - 0.5) * 120}px, ${(by - 0.5) * 90}px, 0)`
       }
+
+      const settled = Math.abs(mx - bx) < 0.002 && Math.abs(my - by) < 0.002
+      if (settled) {
+        running = false
+        return
+      }
       raf = requestAnimationFrame(tick)
     }
 
-    window.addEventListener('mousemove', onMove, { passive: true })
-    raf = requestAnimationFrame(tick)
+    const start = () => {
+      if (running) return
+      running = true
+      raf = requestAnimationFrame(tick)
+    }
+
+    const onMove = (e: MouseEvent) => {
+      const rect = wrap.getBoundingClientRect()
+      mx = (e.clientX - rect.left) / rect.width
+      my = (e.clientY - rect.top) / rect.height
+      start()
+    }
+
+    wrap.addEventListener('pointermove', onMove, { passive: true })
 
     return () => {
-      window.removeEventListener('mousemove', onMove)
+      wrap.removeEventListener('pointermove', onMove)
       cancelAnimationFrame(raf)
     }
   }, [reduced])

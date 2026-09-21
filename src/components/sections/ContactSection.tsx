@@ -1,5 +1,5 @@
 import { Clock, Mail, MapPin, Phone } from 'lucide-react'
-import { useMemo, useState, type FormEvent } from 'react'
+import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { submitContactForm } from '../../lib/contact-api'
 import { SITE, SOCIAL } from '../../lib/constants'
@@ -20,6 +20,43 @@ const INTENT_SUBJECTS: Record<string, string> = {
 }
 
 type FormErrors = Partial<Record<'name' | 'company' | 'email' | 'phone' | 'employees', string>>
+
+function DeferredMap() {
+  const ref = useRef<HTMLDivElement>(null)
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return
+        setShow(true)
+        observer.disconnect()
+      },
+      { rootMargin: '240px 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className="h-64 overflow-hidden rounded-3xl border border-border-subtle bg-surface-2 shadow-card md:h-72"
+    >
+      {show ? (
+        <iframe
+          title="HR Shastri office location"
+          src="https://www.google.com/maps?q=Darshanam+Oxypark+Vadodara&output=embed"
+          className="h-full w-full border-0"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      ) : null}
+    </div>
+  )
+}
 
 export function ContactSection({ showMap = true, showHeading = true }: ContactSectionProps) {
   const [searchParams] = useSearchParams()
@@ -130,17 +167,7 @@ export function ContactSection({ showMap = true, showHeading = true }: ContactSe
                 </a>
               </div>
             </div>
-            {showMap ? (
-              <div className="overflow-hidden rounded-3xl border border-border-subtle shadow-card">
-                <iframe
-                  title="HR Shastri office location"
-                  src="https://www.google.com/maps?q=Darshanam+Oxypark+Vadodara&output=embed"
-                  className="h-64 w-full border-0 md:h-72"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            ) : null}
+            {showMap ? <DeferredMap /> : null}
           </RevealItem>
 
           <RevealItem className="rounded-3xl border border-border-subtle bg-white p-6 shadow-card md:p-8">

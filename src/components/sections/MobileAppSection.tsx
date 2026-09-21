@@ -81,11 +81,18 @@ function PhoneMock({ reduced }: { reduced: boolean }) {
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
       >
         <div className="aspect-[9/19] overflow-hidden rounded-[1.35rem] bg-slate-100">
-          <img
-            src="/images/mobile-app-screen.png"
-            alt=""
-            className="h-full w-full scale-[1.02] object-cover object-top"
-          />
+          <picture>
+            <source type="image/webp" srcSet="/images/mobile-app-screen.webp" />
+            <img
+              src="/images/mobile-app-screen.png"
+              alt=""
+              width={320}
+              height={666}
+              className="h-full w-full scale-[1.02] object-cover object-top"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
         </div>
       </motion.div>
 
@@ -96,14 +103,18 @@ function PhoneMock({ reduced }: { reduced: boolean }) {
       >
         {/* Screen only — no notch / camera */}
         <div className="aspect-[9/19] overflow-hidden rounded-[1.65rem] bg-[#0b1f4a]">
-          <img
-            src="/images/mobile-app-screen.png"
-            alt="HR Shastri mobile app — clock in, leave, and announcements"
-            className="h-full w-full scale-[1.02] object-cover object-top"
-            loading="lazy"
-            width={320}
-            height={666}
-          />
+          <picture>
+            <source type="image/webp" srcSet="/images/mobile-app-screen.webp" />
+            <img
+              src="/images/mobile-app-screen.png"
+              alt="HR Shastri mobile app — clock in, leave, and announcements"
+              className="h-full w-full scale-[1.02] object-cover object-top"
+              loading="lazy"
+              decoding="async"
+              width={320}
+              height={666}
+            />
+          </picture>
         </div>
       </motion.div>
     </div>

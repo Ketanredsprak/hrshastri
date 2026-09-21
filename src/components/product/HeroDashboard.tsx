@@ -13,10 +13,10 @@ export function HeroDashboard() {
         className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand-blue/15 to-brand-purple/20 blur-2xl"
         aria-hidden
       />
-      <motion.div
-        initial={reduced ? false : { opacity: 0, scale: 0.98, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ ...easePremium, delay: 0.12 }}
+        <motion.div
+        initial={reduced ? false : { y: 16 }}
+        animate={{ y: 0 }}
+        transition={{ ...easePremium, delay: 0.08 }}
         className="browser-frame relative overflow-hidden"
       >
         <div className="flex items-center gap-2 border-b border-border-subtle bg-surface-1 px-4 py-2.5">
@@ -28,16 +28,23 @@ export function HeroDashboard() {
           </span>
         </div>
         <div className="relative max-h-[min(280px,48vh)] overflow-hidden bg-surface-1 sm:max-h-[min(360px,52vh)] lg:max-h-[480px]">
-          <img
-            src={HERO_DASHBOARD_SRC}
-            alt="HR Shastri HRMS dashboard with staff metrics, calendar, attendance modules, and workforce overview"
-            className="block h-full w-full object-cover object-left-top"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            width={1920}
-            height={1080}
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/images/hero-dashboard-640.webp 640w, /images/hero-dashboard.webp 1024w"
+              sizes="(min-width: 1280px) 560px, (min-width: 1024px) 48vw, 100vw"
+            />
+            <img
+              src={HERO_DASHBOARD_SRC}
+              alt="HR Shastri HRMS dashboard with staff metrics, calendar, attendance modules, and workforce overview"
+              className="block h-full w-full object-cover object-left-top"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width={1024}
+              height={501}
+            />
+          </picture>
         </div>
       </motion.div>
     </div>

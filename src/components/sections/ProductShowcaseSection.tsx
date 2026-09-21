@@ -36,15 +36,22 @@ export function ProductShowcaseSection() {
               </span>
             </div>
             <div className="relative max-h-[min(520px,70vh)] overflow-hidden bg-surface-1">
+              <picture>
+              <source
+                type="image/webp"
+                srcSet="/images/product-showcase-dashboard-768.webp 768w, /images/product-showcase-dashboard.webp 1024w"
+                sizes="(min-width: 1280px) 1152px, 100vw"
+              />
               <img
                 src={SHOWCASE_IMAGE}
                 alt="HR Shastri dashboard showing mark attendance, staff metrics, employee list, and calendar for HR and payroll teams"
                 className="block w-full object-cover object-left-top"
                 loading="lazy"
                 decoding="async"
-                width={1920}
-                height={1080}
+                width={1024}
+                height={506}
               />
+            </picture>
             </div>
           </div>
           <p className="mt-4 text-center text-sm text-slate-400">
