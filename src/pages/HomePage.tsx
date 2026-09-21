@@ -81,10 +81,10 @@ export default function HomePage() {
         <ProcessSection />
       </Suspense>
       <Suspense fallback={null}>
-        <CtaBand />
+        <CtaBand ornament />
       </Suspense>
       <Suspense fallback={null}>
-        <ContactSection showHeading={false} />
+        <ContactSection showHeading={false} ornament />
       </Suspense>
     </>
   )

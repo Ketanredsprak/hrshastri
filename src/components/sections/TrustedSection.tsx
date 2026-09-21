@@ -1,18 +1,23 @@
 import { TRUSTED_LOGOS } from '../../data/testimonials'
 import { Container } from '../ui/Container'
 import { MotionReveal, RevealGroup, RevealItem } from '../ui/MotionReveal'
+import { DotField, DotRule } from '../ui/SectionMotif'
 import { SectionHeading } from '../ui/SectionHeading'
 
 export function TrustedSection() {
   return (
-    <section className="border-y border-border-subtle bg-white section-padding-tight">
-      <Container>
+    <section className="relative overflow-hidden border-y border-border-subtle bg-white section-padding-tight">
+      <DotField />
+      <Container className="relative">
         <MotionReveal>
           <SectionHeading
             eyebrow="Social proof"
             title="Trusted by HR teams across India"
             description="Manufacturing, services, stock markets, immigration, and more run daily HR on HR Shastri."
           />
+          <div className="-mt-6 mb-8 sm:-mt-8">
+            <DotRule />
+          </div>
         </MotionReveal>
         <RevealGroup className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
           {TRUSTED_LOGOS.map((name) => (

@@ -5,6 +5,7 @@ import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { easePremium, fadeUp, staggerContainer } from '../../lib/motion-presets'
 import { Badge } from '../ui/Badge'
 import { Container } from '../ui/Container'
+import { OrbitField } from '../ui/SectionMotif'
 
 const features = [
   'Attendance punch with geofencing patterns',
@@ -140,6 +141,7 @@ export function MobileAppSection() {
             backgroundSize: '40px 40px',
           }}
         />
+        <OrbitField className="absolute -right-16 top-8 h-72 w-72 text-white/20 sm:h-96 sm:w-96" />
       </div>
 
       <Container className="relative">

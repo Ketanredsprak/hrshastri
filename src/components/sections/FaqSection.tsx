@@ -19,7 +19,15 @@ export function FaqSection({ limit, layout = 'center' }: FaqSectionProps) {
       <section className="section-padding bg-white" id="faq">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-            <MotionReveal className="lg:col-span-4 lg:pt-2">
+            <MotionReveal className="relative lg:col-span-4 lg:pt-2">
+              <span
+                className="pointer-events-none absolute top-2 -right-8 hidden h-[calc(100%-1rem)] w-px lg:block"
+                aria-hidden
+                style={{
+                  backgroundImage: 'linear-gradient(to bottom, rgb(0 51 204 / 0.45) 40%, transparent 0)',
+                  backgroundSize: '1px 10px',
+                }}
+              />
               <Badge variant="blue">FAQ</Badge>
               <h2 className="mt-4 text-section font-bold text-brand-ink">
                 Answers for HR, finance, and leadership

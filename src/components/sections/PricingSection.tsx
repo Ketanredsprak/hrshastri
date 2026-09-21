@@ -3,6 +3,7 @@ import { PRICING_PLANS } from '../../data/pricing'
 import { Container } from '../ui/Container'
 import { Button } from '../ui/Button'
 import { MotionReveal, RevealGroup, RevealItem } from '../ui/MotionReveal'
+import { CornerSquares } from '../ui/SectionMotif'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Link } from 'react-router-dom'
 
@@ -31,6 +32,7 @@ export function PricingSection({ compact = false }: PricingSectionProps) {
                   : 'border-slate-100 bg-white'
               }`}
             >
+              {compact ? <CornerSquares className={plan.highlighted ? 'text-brand-purple/40' : 'text-brand-blue/30'} /> : null}
               {plan.highlighted ? (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full gradient-brand px-3 py-1 text-xs font-semibold text-white">
                   Most Popular

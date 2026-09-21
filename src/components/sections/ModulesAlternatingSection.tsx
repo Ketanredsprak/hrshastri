@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 import { DETAILED_MODULES } from '../../data/modules'
 import { Container } from '../ui/Container'
+import { WaveRule } from '../ui/SectionMotif'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/Button'
@@ -93,6 +94,9 @@ export function ModulesAlternatingSection({ limit }: ModulesAlternatingSectionPr
           title="Deep modules for every stage of the employee lifecycle"
           description="Hire to retire — attendance, leave, payroll, talent, finance, and analytics in one connected system."
         />
+        <div className="-mt-6 mb-10 sm:-mt-8">
+          <WaveRule />
+        </div>
         <div className="space-y-16 md:space-y-24">
           {modules.map((module, index) => {
             const reversed = index % 2 === 1

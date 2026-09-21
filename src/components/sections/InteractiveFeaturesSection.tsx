@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { MAIN_FEATURES } from '../../data/features'
 import { Container } from '../ui/Container'
 import { RevealGroup, RevealItem } from '../ui/MotionReveal'
+import { DiamondRule, LeafCorner } from '../ui/SectionMotif'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const FEATURE_KEYS = [
@@ -28,12 +29,16 @@ export function InteractiveFeaturesSection() {
           title="Explore the platform by capability"
           description="One system for daily operations — the capabilities your HR team uses every day."
         />
+        <div className="-mt-6 mb-8 sm:-mt-8">
+          <DiamondRule />
+        </div>
         <RevealGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => {
             const Icon = feature.icon
             return (
               <RevealItem key={feature.title} className="h-full">
-                <article className="flex h-full flex-col rounded-2xl border border-border-subtle bg-white p-5 shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-brand-blue/20 hover:shadow-soft sm:p-6">
+                <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-subtle bg-white p-5 shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-brand-blue/20 hover:shadow-soft sm:p-6">
+                  <LeafCorner className="pointer-events-none absolute -right-0.5 -top-0.5 h-[4.25rem] w-[4.25rem] text-brand-purple" />
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-blue-light text-brand-blue">
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>

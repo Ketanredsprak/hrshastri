@@ -2,6 +2,7 @@ import { Shield, Zap, Cloud, Smartphone, Building2, UserCog, Headphones } from '
 import { WHY_CHOOSE_US } from '../../data/features'
 import { Container } from '../ui/Container'
 import { MotionReveal, RevealGroup, RevealItem } from '../ui/MotionReveal'
+import { CornerDiamond, HatchField } from '../ui/SectionMotif'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Card } from '../ui/Card'
 
@@ -9,8 +10,9 @@ const icons = [Zap, Shield, Cloud, Smartphone, Building2, UserCog, Headphones]
 
 export function WhyChooseSection() {
   return (
-    <section className="section-padding bg-surface-1">
-      <Container>
+    <section className="relative section-padding overflow-hidden bg-surface-1">
+      <HatchField />
+      <Container className="relative">
         <MotionReveal>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
             <SectionHeading
@@ -30,7 +32,8 @@ export function WhyChooseSection() {
             const Icon = icons[index] ?? Zap
             return (
               <RevealItem key={item.title}>
-              <Card hover className="!p-5">
+              <Card hover className="relative !p-5">
+                <CornerDiamond className="pointer-events-none absolute right-4 top-4 h-4 w-4 text-brand-magenta/40" />
                 <div className="inline-flex rounded-xl bg-brand-blue-light p-2.5 text-brand-blue">
                   <Icon className="h-5 w-5" aria-hidden />
                 </div>

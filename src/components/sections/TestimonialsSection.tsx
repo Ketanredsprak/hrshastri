@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { TESTIMONIALS } from '../../data/testimonials'
 import { easeFast } from '../../lib/motion-presets'
 import { Container } from '../ui/Container'
+import { QuoteMark } from '../ui/SectionMotif'
 import { SectionHeading } from '../ui/SectionHeading'
 
 export function TestimonialsSection() {
@@ -21,7 +22,8 @@ export function TestimonialsSection() {
           title="Trusted by HR leaders"
           description="Outcomes from teams that replaced spreadsheets and disconnected tools with one HRMS platform."
         />
-        <div className="relative mx-auto max-w-4xl rounded-2xl border border-border-subtle bg-surface-1 p-5 sm:rounded-3xl sm:p-8 md:p-12">
+        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-border-subtle bg-surface-1 p-5 sm:rounded-3xl sm:p-8 md:p-12">
+          <QuoteMark className="pointer-events-none absolute -left-2 -top-1 h-16 w-20 text-brand-purple/10 sm:h-20 sm:w-24" />
           <AnimatePresence mode="wait">
             <motion.div
               key={item.name}

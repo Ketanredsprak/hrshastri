@@ -7,10 +7,12 @@ import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { MotionReveal, RevealGroup, RevealItem } from '../ui/MotionReveal'
 import { Input } from '../ui/Input'
+import { PinRings } from '../ui/SectionMotif'
 
 type ContactSectionProps = {
   showMap?: boolean
   showHeading?: boolean
+  ornament?: boolean
 }
 
 const INTENT_SUBJECTS: Record<string, string> = {
@@ -58,7 +60,7 @@ function DeferredMap() {
   )
 }
 
-export function ContactSection({ showMap = true, showHeading = true }: ContactSectionProps) {
+export function ContactSection({ showMap = true, showHeading = true, ornament = false }: ContactSectionProps) {
   const [searchParams] = useSearchParams()
   const defaultSubject = useMemo(() => {
     const intent = searchParams.get('intent')
@@ -114,8 +116,14 @@ export function ContactSection({ showMap = true, showHeading = true }: ContactSe
   }
 
   return (
-    <section className="section-padding bg-surface-1" id="contact">
-      <Container>
+    <section className="relative section-padding overflow-hidden bg-surface-1" id="contact">
+      {ornament ? (
+        <>
+          <PinRings className="pointer-events-none absolute -left-4 top-6 h-28 w-28 text-brand-blue/20" />
+          <PinRings className="pointer-events-none absolute -right-6 bottom-4 h-32 w-32 rotate-180 text-brand-magenta/15" />
+        </>
+      ) : null}
+      <Container className="relative">
         {showHeading ? (
           <MotionReveal className="mb-12 max-w-2xl">
             <h2 className="text-section font-bold text-brand-ink">Contact & demo requests</h2>

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { easePremium } from '../../lib/motion-presets'
 import { Container } from '../ui/Container'
+import { CropMarks } from '../ui/SectionMotif'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const SHOWCASE_IMAGE = '/images/product-showcase-dashboard.png'
@@ -24,8 +25,9 @@ export function ProductShowcaseSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={easePremium}
-          className="mx-auto max-w-6xl"
+          className="relative mx-auto max-w-6xl px-3 py-3 sm:px-4"
         >
+          <CropMarks className="text-white/35" />
           <div className="overflow-hidden rounded-2xl border border-white/15 bg-white shadow-lift ring-1 ring-white/10">
             <div className="flex items-center gap-2 border-b border-border-subtle bg-surface-1 px-4 py-2.5">
               <span className="h-2.5 w-2.5 rounded-full bg-red-400" aria-hidden />
