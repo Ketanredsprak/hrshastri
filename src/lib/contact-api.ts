@@ -1,5 +1,3 @@
-const SUBMIT_PATH = '/api/contact-submit.php'
-
 export type ContactPayload = {
   name: string
   company: string
@@ -12,15 +10,51 @@ export type ContactPayload = {
 }
 
 export async function submitContactForm(payload: ContactPayload): Promise<void> {
-  const response = await fetch(SUBMIT_PATH, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
+  const customUrl = (import.meta.env.VITE_CONTACT_API_URL as string | undefined)?.trim()
+  const endpoints = [
+    ...(customUrl ? [customUrl] : []),
+    '/api/contact-submit.php',
+    '/api/contact-submit',
+  ]
 
-  const data = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null
+  let lastError: string | null = null
 
-  if (!response.ok || !data?.ok) {
-    throw new Error(data?.error ?? 'Could not send your message. Please try again or call us.')
+  for (const endpoint of endpoints) {
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      const contentType = response.headers.get('content-type') || ''
+      // If server returned HTML (e.g. static index.html or 404 page), try next endpoint
+      if (!contentType.includes('application/json')) {
+        continue
+      }
+
+      const data = (await response.json().catch(() => null)) as {
+        ok?: boolean
+        error?: string
+      } | null
+
+      if (response.ok && data?.ok) {
+        return // Successfully submitted!
+      }
+
+      if (data?.error) {
+        lastError = data.error
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        lastError = err.message
+      }
+    }
   }
+
+  throw new Error(lastError || 'Could not send your message. Please try again or call us.')
 }
+
