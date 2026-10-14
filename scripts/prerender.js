@@ -691,11 +691,8 @@ function prerender() {
       )
     }
 
-    // Inject pre-rendered crawlable HTML inside <div id="root">
-    html = html.replace(
-      /<div id="root">[\s\S]*?<\/div>/i,
-      `<div id="root">${route.content}</div>`,
-    )
+    // Keep #root completely clean so React mounts cleanly with zero content leaking after the footer
+    html = html.replace(/<div id="root">[\s\S]*?<\/div>/i, '<div id="root"></div>')
 
     fs.writeFileSync(fullOutputPath, html, 'utf8')
     console.log(`Pre-rendered: ${route.path} -> ${route.outputPath}`)
