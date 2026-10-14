@@ -20,7 +20,7 @@ type ButtonProps = {
   className?: string
   type?: 'button' | 'submit'
   disabled?: boolean
-  onClick?: () => void
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void
   /** Label shown inside custom cursor ring on hover */
   'data-cursor'?: string
 }
@@ -58,11 +58,11 @@ export function Button({
   onClick,
   'data-cursor': dataCursor,
 }: ButtonProps) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-full font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${variants[variant]} ${sizes[size]} ${className}`
+  const classes = `inline-flex items-center justify-center gap-2 rounded-full font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 cursor-pointer ${variants[variant]} ${sizes[size]} ${className}`
 
   if (to && !disabled) {
     return (
-      <Link to={to} className={classes} data-cursor={dataCursor}>
+      <Link to={to} className={classes} data-cursor={dataCursor} onClick={onClick}>
         {children}
       </Link>
     )
@@ -74,6 +74,7 @@ export function Button({
         href={href}
         className={classes}
         data-cursor={dataCursor}
+        onClick={onClick}
         target={href.startsWith('http') ? '_blank' : undefined}
         rel={href.startsWith('http') ? 'noreferrer' : undefined}
       >

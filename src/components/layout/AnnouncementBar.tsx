@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ANNOUNCEMENTS } from '../../lib/constants'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { useContactRedirect } from '../../lib/contact-navigation'
 
 export function AnnouncementBar() {
   const [index, setIndex] = useState(0)
   const reduced = useReducedMotion()
+  const contactRedirect = useContactRedirect()
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -30,7 +32,11 @@ export function AnnouncementBar() {
             className="line-clamp-2 sm:line-clamp-1"
           >
             {ANNOUNCEMENTS[index]}{' '}
-            <Link to="/contact?intent=demo" className="underline underline-offset-2 hover:text-white/90">
+            <Link
+              to="/#contact?intent=demo"
+              onClick={(e) => contactRedirect('demo', e)}
+              className="underline underline-offset-2 hover:text-white/90"
+            >
               Learn more
             </Link>
           </motion.p>

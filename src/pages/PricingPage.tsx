@@ -1,14 +1,17 @@
 import { PageHero } from '../components/marketing/PageHero'
 import { CtaBand } from '../components/marketing/CtaBand'
 import { SEO } from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 import { PricingSection } from '../components/sections/PricingSection'
 
 export default function PricingPage() {
   return (
     <>
       <SEO
-        title="Pricing"
-        description="HR Shastri pricing plans for Starter, Business, and Enterprise teams. Scale users and employees as your company grows."
+        title={PAGE_SEO.pricing.title}
+        description={PAGE_SEO.pricing.description}
+        keywords={PAGE_SEO.pricing.keywords}
+        breadcrumbs={PAGE_SEO.pricing.breadcrumbs}
         path="/pricing"
       />
       <PageHero

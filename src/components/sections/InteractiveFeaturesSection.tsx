@@ -37,12 +37,14 @@ export function InteractiveFeaturesSection() {
             const Icon = feature.icon
             return (
               <RevealItem key={feature.title} className="h-full">
-                <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-subtle bg-white p-5 shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-brand-blue/20 hover:shadow-soft sm:p-6">
-                  <LeafCorner className="pointer-events-none absolute -right-0.5 -top-0.5 h-[4.25rem] w-[4.25rem] text-brand-purple" />
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-blue-light text-brand-blue">
+                <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-subtle bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-purple/35 hover:shadow-lift cursor-default sm:p-6">
+                  <LeafCorner className="pointer-events-none absolute -right-0.5 -top-0.5 h-[4.25rem] w-[4.25rem] text-brand-purple transition-all duration-300 group-hover:scale-110 group-hover:text-brand-magenta" />
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-blue-light text-brand-blue transition-all duration-300 group-hover:gradient-brand group-hover:text-white group-hover:scale-105">
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>
-                  <h3 className="mt-4 text-base font-bold text-brand-ink">{feature.title}</h3>
+                  <h3 className="mt-4 text-base font-bold text-brand-ink transition-colors group-hover:text-brand-blue">
+                    {feature.title}
+                  </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{feature.description}</p>
                 </article>
               </RevealItem>

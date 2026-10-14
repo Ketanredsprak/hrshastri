@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { PageHero } from '../components/marketing/PageHero'
 import { SEO } from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 import { Container } from '../components/ui/Container'
 import { MotionReveal } from '../components/ui/MotionReveal'
 import { SITE } from '../lib/constants'
@@ -9,8 +10,10 @@ export default function TermsOfUsePage() {
   return (
     <>
       <SEO
-        title="Terms of Use"
-        description={`Conditions for using the ${SITE.name} marketing website at ${SITE.url}.`}
+        title={PAGE_SEO.terms.title}
+        description={PAGE_SEO.terms.description}
+        keywords={PAGE_SEO.terms.keywords}
+        breadcrumbs={PAGE_SEO.terms.breadcrumbs}
         path="/terms-of-use"
       />
       <PageHero

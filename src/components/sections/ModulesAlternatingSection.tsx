@@ -6,6 +6,7 @@ import { WaveRule } from '../ui/SectionMotif'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/Button'
+import { useContactRedirect } from '../../lib/contact-navigation'
 
 function ModuleVisual({
   title,
@@ -85,6 +86,7 @@ type ModulesAlternatingSectionProps = {
 
 export function ModulesAlternatingSection({ limit }: ModulesAlternatingSectionProps) {
   const modules = limit ? DETAILED_MODULES.slice(0, limit) : DETAILED_MODULES
+  const contactRedirect = useContactRedirect()
 
   return (
     <section className="section-padding bg-surface-1" id="modules">
@@ -123,7 +125,13 @@ export function ModulesAlternatingSection({ limit }: ModulesAlternatingSectionPr
                     ))}
                   </ul>
                   <div className="mt-6 sm:mt-8">
-                    <Button to="/contact?intent=demo" variant="outline" size="sm" className="w-full sm:w-auto">
+                    <Button
+                      to="/#contact?intent=demo"
+                      onClick={(e) => contactRedirect('demo', e)}
+                      variant="outline"
+                      size="sm"
+                      className="w-full sm:w-auto"
+                    >
                       Book demo for {module.title}
                     </Button>
                   </div>

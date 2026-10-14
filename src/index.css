@@ -57,19 +57,22 @@
     height: auto;
   }
 
-  /* Custom dual-circle cursor (desktop only — class set by CustomCursor) */
-  @media (pointer: fine) and (hover: hover) {
-    html.has-custom-cursor,
-    html.has-custom-cursor * {
-      cursor: none !important;
-    }
+  /* Interactive cursor styling: ensure main native cursor is visible and responsive everywhere */
+  button,
+  a,
+  [role="button"],
+  summary,
+  select {
+    cursor: pointer;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    html.has-custom-cursor,
-    html.has-custom-cursor * {
-      cursor: auto !important;
-    }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="number"],
+  textarea {
+    cursor: text;
   }
 
   ::selection {

@@ -53,7 +53,7 @@ export function ScreenshotsSection() {
               <button
                 type="button"
                 onClick={() => setIndex((i) => (i - 1 + slides.length) % slides.length)}
-                className="rounded-full border border-white/20 p-2 hover:bg-white/10"
+                className="cursor-pointer rounded-full border border-white/20 p-2 transition-all hover:border-white/50 hover:bg-white/15 active:scale-95"
                 aria-label="Previous screenshot"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -64,7 +64,9 @@ export function ScreenshotsSection() {
                     key={s.title}
                     type="button"
                     onClick={() => setIndex(i)}
-                    className={`h-2.5 rounded-full transition ${i === index ? 'w-8 gradient-brand' : 'w-2.5 bg-white/30'}`}
+                    className={`h-2.5 rounded-full cursor-pointer transition-all ${
+                      i === index ? 'w-8 gradient-brand' : 'w-2.5 bg-white/30 hover:bg-white/50'
+                    }`}
                     aria-label={`Show ${s.title}`}
                   />
                 ))}
@@ -72,7 +74,7 @@ export function ScreenshotsSection() {
               <button
                 type="button"
                 onClick={() => setIndex((i) => (i + 1) % slides.length)}
-                className="rounded-full border border-white/20 p-2 hover:bg-white/10"
+                className="cursor-pointer rounded-full border border-white/20 p-2 transition-all hover:border-white/50 hover:bg-white/15 active:scale-95"
                 aria-label="Next screenshot"
               >
                 <ChevronRight className="h-5 w-5" />

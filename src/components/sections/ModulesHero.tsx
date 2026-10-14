@@ -5,6 +5,7 @@ import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { easePremium, fadeUp, staggerContainer } from '../../lib/motion-presets'
+import { useContactRedirect } from '../../lib/contact-navigation'
 
 function FloatingShapes({ reduced }: { reduced: boolean }) {
   if (reduced) {
@@ -59,6 +60,7 @@ function FloatingShapes({ reduced }: { reduced: boolean }) {
 
 export function ModulesHero() {
   const reduced = useReducedMotion()
+  const contactRedirect = useContactRedirect()
 
   return (
     <section className="relative overflow-hidden border-b border-border-subtle bg-surface-1 pt-28 pb-16 md:pt-32 md:pb-20">
@@ -97,7 +99,12 @@ export function ModulesHero() {
               transition={easePremium}
               className="mt-6 flex w-full flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap"
             >
-              <Button to="/contact?intent=demo" data-cursor="Demo" className="w-full sm:w-auto">
+              <Button
+                to="/#contact?intent=demo"
+                onClick={(e) => contactRedirect('demo', e)}
+                data-cursor="Demo"
+                className="w-full sm:w-auto"
+              >
                 Book a guided demo
               </Button>
               <Button href="#module-library" variant="outline" data-cursor="Explore" className="w-full sm:w-auto">

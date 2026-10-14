@@ -68,7 +68,7 @@ export function ModulesPageContent() {
                     variants={fadeUp}
                     transition={easePremium}
                     whileHover={reduced ? undefined : { y: -4, scale: 1.05 }}
-                    className="group flex flex-col items-center gap-2 rounded-2xl px-2 py-1"
+                    className="group flex flex-col items-center gap-2 rounded-2xl px-2 py-1 cursor-pointer"
                   >
                     <span className="inline-flex rounded-xl border border-white/20 bg-white/10 p-2.5 transition group-hover:gradient-brand group-hover:border-transparent group-hover:shadow-soft">
                       <Icon className="h-4 w-4" aria-hidden />

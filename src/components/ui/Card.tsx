@@ -18,8 +18,10 @@ const variants: Record<CardVariant, string> = {
 export function Card({ children, className = '', variant = 'elevated', hover = false }: CardProps) {
   return (
     <div
-      className={`rounded-2xl p-6 transition duration-200 md:p-7 ${variants[variant]} ${
-        hover ? 'hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft' : ''
+      className={`rounded-2xl p-6 transition-all duration-300 md:p-7 ${variants[variant]} ${
+        hover
+          ? 'hover:-translate-y-1.5 hover:border-brand-purple/35 hover:shadow-lift group cursor-default'
+          : ''
       } ${className}`}
     >
       {children}

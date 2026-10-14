@@ -38,7 +38,10 @@ export function HrmExplainerSection() {
               'WFH, short leave, gate pass, visits, claims, and geofencing attendance',
               'Recruitment, performance, training, finance, assets, and analytics',
             ].map((item) => (
-              <li key={item} className="flex gap-3 rounded-xl bg-surface px-4 py-3">
+              <li
+                key={item}
+                className="flex gap-3 rounded-xl bg-surface px-4 py-3 transition-all duration-200 hover:bg-white hover:shadow-sm hover:translate-x-1.5 hover:border hover:border-brand-blue/20 cursor-default"
+              >
                 <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full gradient-brand" />
                 {item}
               </li>

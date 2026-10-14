@@ -6,11 +6,13 @@ import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { NAV_LINKS, SITE } from '../../lib/constants'
 import { BrandLogo } from './BrandLogo'
+import { useContactRedirect } from '../../lib/contact-navigation'
 
 export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
+  const contactRedirect = useContactRedirect()
 
   useEffect(() => {
     const onScroll = () => {
@@ -85,10 +87,21 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <Button to="/contact?intent=demo" variant="outline" className="!px-4 !py-2.5 !text-sm" data-cursor="Demo">
+            <Button
+              to="/#contact?intent=demo"
+              onClick={(e) => contactRedirect('demo', e)}
+              variant="outline"
+              className="!px-4 !py-2.5 !text-sm"
+              data-cursor="Demo"
+            >
               Book demo
             </Button>
-            <Button to="/contact?intent=trial" className="!px-4 !py-2.5 !text-sm" data-cursor="Trial">
+            <Button
+              to="/#contact?intent=trial"
+              onClick={(e) => contactRedirect('trial', e)}
+              className="!px-4 !py-2.5 !text-sm"
+              data-cursor="Trial"
+            >
               Free trial
             </Button>
           </div>
@@ -148,10 +161,25 @@ export function Header() {
                   Login
                 </a>
                 <div className="mt-3 flex flex-col gap-2.5 border-t border-border-subtle pt-4">
-                  <Button to="/contact?intent=demo" variant="outline" className="w-full !py-3">
+                  <Button
+                    to="/#contact?intent=demo"
+                    onClick={(e) => {
+                      setOpen(false)
+                      contactRedirect('demo', e)
+                    }}
+                    variant="outline"
+                    className="w-full !py-3"
+                  >
                     Book demo
                   </Button>
-                  <Button to="/contact?intent=trial" className="w-full !py-3">
+                  <Button
+                    to="/#contact?intent=trial"
+                    onClick={(e) => {
+                      setOpen(false)
+                      contactRedirect('trial', e)
+                    }}
+                    className="w-full !py-3"
+                  >
                     Free trial
                   </Button>
                 </div>

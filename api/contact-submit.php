@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/mailer.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header('Access-Control-Allow-Methods: POST, OPTIONS');
@@ -29,7 +30,7 @@ $name = sanitize_string($body['name'] ?? '', 120);
 $company = sanitize_string($body['company'] ?? '', 160);
 $email = sanitize_string($body['email'] ?? '', 160);
 $phone = sanitize_string($body['phone'] ?? '', 40);
-$employees = sanitize_string($body['employees'] ?? '', 40);
+$employees = preg_replace('/\D/', '', sanitize_string($body['employees'] ?? '', 20));
 $message = sanitize_string($body['message'] ?? '', 2000);
 $subject = sanitize_string($body['subject'] ?? 'General inquiry', 120);
 
@@ -61,6 +62,13 @@ array_unshift($items, $entry);
 
 if (!write_submissions($path, $items)) {
     json_response(500, ['ok' => false, 'error' => 'Could not save submission']);
+}
+
+// Send email notification to configured admin email
+try {
+    send_lead_notification($CONFIG, $entry);
+} catch (\Throwable $e) {
+    error_log('HR Shastri mail error: ' . $e->getMessage());
 }
 
 json_response(201, ['ok' => true, 'id' => $entry['id']]);

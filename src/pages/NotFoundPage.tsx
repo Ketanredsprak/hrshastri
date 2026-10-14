@@ -2,11 +2,17 @@ import { Link } from 'react-router-dom'
 import { Container } from '../components/ui/Container'
 import { Button } from '../components/ui/Button'
 import { SEO } from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 
 export default function NotFoundPage() {
   return (
     <>
-      <SEO title="Page Not Found" path="/404" />
+      <SEO
+        title={PAGE_SEO.notFound.title}
+        description={PAGE_SEO.notFound.description}
+        robots={PAGE_SEO.notFound.robots}
+        path="/404"
+      />
       <section className="section-padding pt-32">
         <Container className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-purple">404</p>

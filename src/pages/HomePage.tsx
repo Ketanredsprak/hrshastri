@@ -1,5 +1,11 @@
 import { lazy, Suspense } from 'react'
-import { SEO, organizationSchema, softwareApplicationSchema } from '../components/seo/SEO'
+import {
+  SEO,
+  webSiteSchema,
+  organizationSchema,
+  softwareApplicationSchema,
+} from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 import { HeroSection } from '../components/sections/HeroSection'
 import { HrmExplainerSection } from '../components/sections/HrmExplainerSection'
 import { InteractiveFeaturesSection } from '../components/sections/InteractiveFeaturesSection'
@@ -41,14 +47,29 @@ const ProcessSection = lazy(() =>
 const CtaBand = lazy(() =>
   import('../components/marketing/CtaBand').then((m) => ({ default: m.CtaBand })),
 )
-const ContactSection = lazy(() =>
-  import('../components/sections/ContactSection').then((m) => ({ default: m.ContactSection })),
-)
+import { useEffect } from 'react'
+import { ContactSection } from '../components/sections/ContactSection'
+import { scrollToContactElement } from '../lib/contact-navigation'
 
 export default function HomePage() {
+  useEffect(() => {
+    if (window.location.hash === '#contact') {
+      const timer = window.setTimeout(() => {
+        scrollToContactElement(undefined, 76)
+      }, 120)
+      return () => window.clearTimeout(timer)
+    }
+  }, [])
   return (
     <>
-      <SEO jsonLd={[organizationSchema, softwareApplicationSchema]} path="/" />
+      <SEO
+        title={PAGE_SEO.home.title}
+        description={PAGE_SEO.home.description}
+        keywords={PAGE_SEO.home.keywords}
+        breadcrumbs={PAGE_SEO.home.breadcrumbs}
+        jsonLd={[webSiteSchema, organizationSchema, softwareApplicationSchema]}
+        path="/"
+      />
       <HeroSection />
       <TrustedSection />
       <HrmExplainerSection />
@@ -83,9 +104,7 @@ export default function HomePage() {
       <Suspense fallback={null}>
         <CtaBand ornament />
       </Suspense>
-      <Suspense fallback={null}>
-        <ContactSection showHeading={false} ornament />
-      </Suspense>
+      <ContactSection showHeading={false} ornament />
     </>
   )
 }

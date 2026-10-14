@@ -1,5 +1,6 @@
 import { PageHero } from '../components/marketing/PageHero'
 import { SEO } from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 import { Container } from '../components/ui/Container'
 import { MotionReveal } from '../components/ui/MotionReveal'
 
@@ -87,8 +88,10 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <SEO
-        title="Privacy Policy"
-        description="Privacy Policy for HR Shastri (hrshastri.com) — how we collect, use, and protect your information."
+        title={PAGE_SEO.privacy.title}
+        description={PAGE_SEO.privacy.description}
+        keywords={PAGE_SEO.privacy.keywords}
+        breadcrumbs={PAGE_SEO.privacy.breadcrumbs}
         path="/privacy-policy"
       />
       <PageHero

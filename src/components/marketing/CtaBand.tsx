@@ -3,6 +3,7 @@ import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { MotionReveal } from '../ui/MotionReveal'
 import { ChevronRule } from '../ui/SectionMotif'
+import { useContactRedirect } from '../../lib/contact-navigation'
 
 type CtaBandProps = {
   title?: string
@@ -15,6 +16,7 @@ export function CtaBand({
   description = 'Book a free demo with our implementation team — payroll, attendance, leave, and compliance configured for your organization.',
   ornament = false,
 }: CtaBandProps) {
+  const contactRedirect = useContactRedirect()
   return (
     <section className="section-padding-tight bg-surface-1">
       <Container>
@@ -36,11 +38,23 @@ export function CtaBand({
               <h2 className="text-2xl font-bold tracking-tight md:text-3xl">{title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-white/95 md:text-base">{description}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button to="/contact?intent=demo" variant="inverse" size="lg" className="w-full sm:w-auto">
+                <Button
+                  to="/#contact?intent=demo"
+                  onClick={(e) => contactRedirect('demo', e)}
+                  variant="inverse"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
                   Book a free demo
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </Button>
-                <Button to="/contact" variant="outlineOnDark" size="lg" className="w-full sm:w-auto">
+                <Button
+                  to="/#contact?intent=inquiry"
+                  onClick={(e) => contactRedirect('inquiry', e)}
+                  variant="outlineOnDark"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
                   Contact us
                 </Button>
               </div>

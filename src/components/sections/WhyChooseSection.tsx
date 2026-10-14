@@ -32,12 +32,14 @@ export function WhyChooseSection() {
             const Icon = icons[index] ?? Zap
             return (
               <RevealItem key={item.title}>
-              <Card hover className="relative !p-5">
-                <CornerDiamond className="pointer-events-none absolute right-4 top-4 h-4 w-4 text-brand-magenta/40" />
-                <div className="inline-flex rounded-xl bg-brand-blue-light p-2.5 text-brand-blue">
+              <Card hover className="group relative !p-5">
+                <CornerDiamond className="pointer-events-none absolute right-4 top-4 h-4 w-4 text-brand-magenta/40 transition-transform duration-300 group-hover:scale-125 group-hover:text-brand-magenta" />
+                <div className="inline-flex rounded-xl bg-brand-blue-light p-2.5 text-brand-blue transition-all duration-300 group-hover:gradient-brand group-hover:text-white group-hover:scale-105">
                   <Icon className="h-5 w-5" aria-hidden />
                 </div>
-                <h3 className="mt-4 text-base font-bold text-brand-ink">{item.title}</h3>
+                <h3 className="mt-4 text-base font-bold text-brand-ink transition-colors group-hover:text-brand-purple">
+                  {item.title}
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
               </Card>
               </RevealItem>

@@ -32,15 +32,17 @@ export function Accordion({ items, singleOpen = true }: AccordionProps) {
           >
             <button
               type="button"
-              className="flex w-full items-start justify-between gap-3 px-4 py-4 text-left sm:items-center sm:gap-4 sm:px-5 md:px-6 md:py-5"
+              className="group flex w-full cursor-pointer items-start justify-between gap-3 px-4 py-4 text-left transition-colors hover:bg-slate-50/70 sm:items-center sm:gap-4 sm:px-5 md:px-6 md:py-5"
               onClick={() => toggle(index)}
               aria-expanded={isOpen}
             >
-              <span className="min-w-0 text-sm font-semibold leading-snug text-brand-ink sm:text-base md:text-lg">
+              <span className="min-w-0 text-sm font-semibold leading-snug text-brand-ink transition-colors group-hover:text-brand-blue sm:text-base md:text-lg">
                 {item.question}
               </span>
               <ChevronDown
-                className={`mt-0.5 h-5 w-5 shrink-0 text-brand-blue transition sm:mt-0 ${isOpen ? 'rotate-180' : ''}`}
+                className={`mt-0.5 h-5 w-5 shrink-0 text-brand-blue transition-transform duration-200 sm:mt-0 ${
+                  isOpen ? 'rotate-180' : 'group-hover:translate-y-0.5'
+                }`}
               />
             </button>
             <AnimatePresence initial={false}>

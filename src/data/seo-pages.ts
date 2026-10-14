@@ -7,6 +7,7 @@ export type PageSeoConfig = {
   /** Full title override (optional) */
   titleAbsolute?: string
   description: string
+  keywords?: string
   ogImage?: string
   robots?: string
   type?: 'website' | 'article'
@@ -17,21 +18,26 @@ const OG_DEFAULT = `${SITE.url}/images/og-default.png`
 
 export const DEFAULT_OG_IMAGE = OG_DEFAULT
 
-/** Central SEO metadata — unique per indexable route */
+/** Central SEO metadata — tailored for commercial buyer search intent across India & global markets */
 export const PAGE_SEO: Record<string, PageSeoConfig> = {
   home: {
     path: '/',
-    title: 'HRMS Software for Indian Businesses',
-    titleAbsolute: 'HRMS Software for Indian Businesses | HR Shastri',
+    title: 'HRMS Software for Indian Businesses — Complete Employee Management System',
+    titleAbsolute: 'HRMS Software for Indian Businesses — Complete Employee Management System | HR Shastri',
     description:
-      'HR Shastri is cloud HRMS software for Indian businesses — employee records, attendance, leave, Indian payroll, recruitment, and mobile self-service in one secure platform.',
+      'HR Shastri is cloud HRMS software for Indian businesses to manage employees — attendance tracking, leave approvals, India-ready payroll (PF, ESI, TDS), recruitment, and mobile self-service. Book a free demo.',
+    keywords:
+      'HRMS software, employee management system, HR software India, payroll software India, attendance management system, leave management software, biometric attendance HRMS, workforce management system, employee self service app, buy HRMS software',
     breadcrumbs: [{ name: 'Home', path: '/' }],
   },
   features: {
     path: '/features',
-    title: 'HRMS Features — Attendance, Leave, Payroll & More',
+    title: 'HRMS Software Features — Attendance, Leave, Payroll & Self-Service',
+    titleAbsolute: 'HRMS Software Features — Attendance, Leave, Payroll & Self-Service | HR Shastri',
     description:
-      'Explore HR Shastri HRMS features: employee management, attendance and leave, India-ready payroll, recruitment, performance, claims, timesheets, and employee self-service.',
+      'Explore HR Shastri HRMS features: centralized employee database, biometric & geofence attendance, leave workflows, statutory Indian payroll, recruitment ATS, performance, and mobile self-service.',
+    keywords:
+      'HRMS features, attendance management software, leave tracking software, Indian payroll software, HR self service portal, HR software features, employee database system, geofencing attendance',
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'Features', path: '/features' },
@@ -39,9 +45,12 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
   },
   modules: {
     path: '/modules',
-    title: 'HRMS Modules — Hire to Retire Workflows',
+    title: 'HRMS Modules — Complete Hire-to-Retire Workforce Management',
+    titleAbsolute: 'HRMS Modules — Complete Hire-to-Retire Workforce Management | HR Shastri',
     description:
-      'Browse HR Shastri modules: employee database, attendance, leave, payroll, recruitment, performance, expense claims, reports, and the HR Shastri mobile app.',
+      'Browse HR Shastri modules: employee records, biometric attendance, automated leave, PF/ESI payroll, recruitment ATS, performance appraisals, expense claims, and Android/iOS mobile app.',
+    keywords:
+      'HRMS modules, workforce management modules, HR payroll module, attendance module, leave management module, employee database system, recruitment software module',
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'Modules', path: '/modules' },
@@ -49,9 +58,12 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
   },
   pricing: {
     path: '/pricing',
-    title: 'HRMS Pricing Plans — Starter, Business, Enterprise',
+    title: 'HRMS Software Pricing & Plans — Affordable for Indian SMEs & Enterprises',
+    titleAbsolute: 'HRMS Software Pricing & Plans — Affordable for Indian SMEs & Enterprises | HR Shastri',
     description:
-      'Compare HR Shastri pricing for Starter, Business, and Enterprise. Transparent plans that scale with admin users and employee headcount.',
+      'Compare HR Shastri HRMS pricing plans: Starter, Business, and Enterprise. Transparent pricing tailored for Indian companies with free setup and dedicated implementation support.',
+    keywords:
+      'HRMS software price, HR software cost India, HRMS pricing plans, affordable HRMS India, employee management software price, payroll software pricing',
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'Pricing', path: '/pricing' },
@@ -59,9 +71,12 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
   },
   faq: {
     path: '/faq',
-    title: 'HRMS FAQ — Payroll, Mobile App, Security & Setup',
+    title: 'HRMS Software FAQ — Payroll, Biometric, Mobile App & Setup',
+    titleAbsolute: 'HRMS Software FAQ — Payroll, Biometric, Mobile App & Setup | HR Shastri',
     description:
-      'Answers about HR Shastri HRMS: what an HRM system is, Indian payroll compliance, mobile apps, security, multi-company support, and implementation timelines.',
+      'Frequently asked questions about HR Shastri HRMS software: Indian statutory payroll compliance, biometric & mobile attendance, implementation timeline, data security, and multi-branch support.',
+    keywords:
+      'HRMS FAQ, HR software questions, payroll software FAQ, HRMS implementation India, biometric attendance questions, cloud HRMS security',
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'FAQ', path: '/faq' },
@@ -69,9 +84,12 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
   },
   about: {
     path: '/about',
-    title: 'About HR Shastri — Cloud HRMS from Vadodara',
+    title: 'About HR Shastri — Cloud HRMS Software Company in Vadodara, India',
+    titleAbsolute: 'About HR Shastri — Cloud HRMS Software Company in Vadodara, India | HR Shastri',
     description:
-      'Learn about HR Shastri: an HRMS team building cloud workforce software for Indian businesses — values, experience, and product focus.',
+      'Learn about HR Shastri: 30+ HR experts with over a decade of domain experience building cloud HRMS software for 50+ companies across India from Vadodara, Gujarat.',
+    keywords:
+      'about HR Shastri, HRMS software company India, HR software provider Vadodara Gujarat, HR tech company India, workforce software creators',
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'About', path: '/about' },
@@ -79,9 +97,12 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
   },
   contact: {
     path: '/contact',
-    title: 'Contact HR Shastri — Demo, Trial & Support',
+    title: 'Contact HR Shastri — Book a Live Demo & Free HRMS Trial',
+    titleAbsolute: 'Contact HR Shastri — Book a Live Demo & Free HRMS Trial | HR Shastri',
     description:
-      'Contact HR Shastri to book a demo, start a free trial, or ask about implementation. Vadodara office · +91 915 707 5570 · info@hrshastri.com.',
+      'Contact HR Shastri to schedule a live product demo or start a free 14-day trial. Reach our Vadodara headquarters at +91 915 707 5570 or info@hrshastri.com.',
+    keywords:
+      'contact HR Shastri, book HRMS demo, HR software free trial, HRMS sales enquiry, HR Shastri Vadodara office, hire HRMS software',
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'Contact', path: '/contact' },
@@ -89,9 +110,11 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
   },
   privacy: {
     path: '/privacy-policy',
-    title: 'Privacy Policy',
+    title: 'Privacy Policy — HR Shastri HRMS Platform',
+    titleAbsolute: 'Privacy Policy — HR Shastri HRMS Platform',
     description:
-      'Privacy Policy for HR Shastri (hrshastri.com): how we collect, use, and protect information on our website.',
+      'Privacy Policy for HR Shastri (hrshastri.com): how we collect, store, process, and protect your company and employee information.',
+    keywords: 'HR Shastri privacy policy, HRMS data protection, employee data privacy',
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'Privacy Policy', path: '/privacy-policy' },
@@ -99,9 +122,11 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
   },
   terms: {
     path: '/terms-of-use',
-    title: 'Terms of Use',
+    title: 'Terms of Use — HR Shastri HRMS Platform',
+    titleAbsolute: 'Terms of Use — HR Shastri HRMS Platform',
     description:
-      'Terms of Use for the HR Shastri website and marketing materials. Read conditions for using hrshastri.com.',
+      'Terms of Use and conditions for using the HR Shastri website, services, and software platform.',
+    keywords: 'HR Shastri terms of use, HRMS service agreement, terms and conditions',
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'Terms of Use', path: '/terms-of-use' },
@@ -109,8 +134,10 @@ export const PAGE_SEO: Record<string, PageSeoConfig> = {
   },
   notFound: {
     path: '/404',
-    title: 'Page Not Found',
-    description: 'The page you requested could not be found on HR Shastri.',
+    title: 'Page Not Found (404)',
+    titleAbsolute: 'Page Not Found (404) | HR Shastri',
+    description: 'The page you requested could not be found on HR Shastri HRMS platform.',
     robots: 'noindex, follow',
   },
 }
+

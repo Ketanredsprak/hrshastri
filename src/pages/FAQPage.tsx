@@ -1,14 +1,17 @@
 import { FAQ_ITEMS } from '../data/faq'
 import { PageHero } from '../components/marketing/PageHero'
 import { SEO, faqSchema } from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 import { FaqSection } from '../components/sections/FaqSection'
 
 export default function FAQPage() {
   return (
     <>
       <SEO
-        title="FAQ"
-        description="Frequently asked questions about HR Shastri HRMS — payroll, mobile app, security, multi-company support, implementation, and compliance."
+        title={PAGE_SEO.faq.title}
+        description={PAGE_SEO.faq.description}
+        keywords={PAGE_SEO.faq.keywords}
+        breadcrumbs={PAGE_SEO.faq.breadcrumbs}
         path="/faq"
         jsonLd={faqSchema(FAQ_ITEMS)}
       />

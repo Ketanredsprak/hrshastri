@@ -1,11 +1,14 @@
+import type React from 'react'
 import { PageHero } from '../components/marketing/PageHero'
 import { CtaBand } from '../components/marketing/CtaBand'
 import { SEO } from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 import { Card } from '../components/ui/Card'
 import { Container } from '../components/ui/Container'
 import { MotionReveal, RevealGroup, RevealItem } from '../components/ui/MotionReveal'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { Button } from '../components/ui/Button'
+import { useContactRedirect } from '../lib/contact-navigation'
 
 const values = [
   {
@@ -27,11 +30,15 @@ const values = [
 ]
 
 export default function AboutPage() {
+  const contactRedirect = useContactRedirect()
+
   return (
     <>
       <SEO
-        title="About Us"
-        description="About HR Shastri — 30+ HR experts, 50+ clients, and a comprehensive cloud HRMS built with industry input for Indian businesses."
+        title={PAGE_SEO.about.title}
+        description={PAGE_SEO.about.description}
+        keywords={PAGE_SEO.about.keywords}
+        breadcrumbs={PAGE_SEO.about.breadcrumbs}
         path="/about"
       />
       <PageHero
@@ -63,7 +70,13 @@ export default function AboutPage() {
                   optimizes every aspect of your HR processes so you can focus on core business
                   priorities.
                 </p>
-                <Button to="/contact?intent=demo" className="mt-6">
+                <Button
+                  to="/#contact?intent=demo"
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) =>
+                    contactRedirect('demo', e)
+                  }
+                  className="mt-6"
+                >
                   Talk to our team
                 </Button>
               </Card>

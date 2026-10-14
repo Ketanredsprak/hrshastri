@@ -4,6 +4,7 @@ import { Container } from '../ui/Container'
 import { MotionReveal, RevealGroup, RevealItem } from '../ui/MotionReveal'
 import { NAV_LINKS, SITE, SOCIAL } from '../../lib/constants'
 import { BrandLogo } from './BrandLogo'
+import { useContactRedirect, type ContactIntent } from '../../lib/contact-navigation'
 
 const footerSections = {
   Company: [
@@ -24,7 +25,8 @@ const footerSections = {
   Resources: [
     { label: 'FAQ', href: '/faq' },
     { label: 'Product Overview', href: '/features' },
-    { label: 'Book Demo', href: '/contact?intent=demo' },
+    { label: 'Book Demo', href: '/#contact?intent=demo' },
+    { label: 'Free Trial', href: '/#contact?intent=trial' },
   ],
   Support: [
     { label: SITE.phone, href: SITE.phoneHref },
@@ -115,6 +117,7 @@ function FooterAppStoreBadge() {
 }
 
 export function Footer() {
+  const contactRedirect = useContactRedirect()
   return (
     <footer className="bg-brand-navy text-slate-300/95">
       <Container className="section-padding pb-10">
@@ -186,6 +189,17 @@ export function Footer() {
                       ) : (
                         <Link
                           to={link.href}
+                          onClick={
+                            link.href.includes('#contact')
+                              ? (e) => {
+                                  const match = link.href.match(/intent=([a-z]+)/)
+                                  contactRedirect(
+                                    match ? (match[1] as ContactIntent) : 'demo',
+                                    e,
+                                  )
+                                }
+                              : undefined
+                          }
                           className="inline-block break-words py-0.5 transition hover:text-white"
                         >
                           {link.label}

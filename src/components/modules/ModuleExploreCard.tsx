@@ -7,6 +7,7 @@ import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { easePremium } from '../../lib/motion-presets'
 import { ModuleShapeArt } from './ModuleShapeArt'
 import { Button } from '../ui/Button'
+import { useContactRedirect } from '../../lib/contact-navigation'
 
 type ModuleExploreCardProps = {
   module: ModuleDetail
@@ -18,6 +19,7 @@ type ModuleExploreCardProps = {
 export function ModuleExploreCard({ module, index, Icon, extras }: ModuleExploreCardProps) {
   const allPoints = [...module.bullets, ...extras]
   const reduced = useReducedMotion()
+  const contactRedirect = useContactRedirect()
 
   return (
     <motion.article
@@ -75,11 +77,17 @@ export function ModuleExploreCard({ module, index, Icon, extras }: ModuleExplore
         </ul>
 
         <div className="mt-4 flex items-center gap-3 border-t border-border-subtle pt-3">
-          <Button to="/contact?intent=demo" size="sm" className="!px-3 !py-1.5 !text-xs">
+          <Button
+            to="/#contact?intent=demo"
+            onClick={(e) => contactRedirect('demo', e)}
+            size="sm"
+            className="!px-3 !py-1.5 !text-xs"
+          >
             Book demo
           </Button>
           <Link
-            to="/contact?intent=trial"
+            to="/#contact?intent=trial"
+            onClick={(e) => contactRedirect('trial', e)}
             className="inline-flex items-center gap-0.5 text-xs font-semibold text-brand-blue transition group-hover/card:gap-1.5 hover:text-brand-purple"
           >
             Free trial

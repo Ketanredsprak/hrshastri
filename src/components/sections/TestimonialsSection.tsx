@@ -63,7 +63,9 @@ export function TestimonialsSection() {
                   key={t.name}
                   type="button"
                   onClick={() => setIndex(i)}
-                  className={`h-2.5 rounded-full transition ${i === index ? 'w-8 bg-brand-blue' : 'w-2.5 bg-border-subtle'}`}
+                  className={`h-2.5 rounded-full cursor-pointer transition-all ${
+                    i === index ? 'w-8 bg-brand-blue' : 'w-2.5 bg-border-subtle hover:bg-slate-400'
+                  }`}
                   aria-label={`Show testimonial from ${t.name}`}
                 />
               ))}
@@ -72,7 +74,7 @@ export function TestimonialsSection() {
               <button
                 type="button"
                 onClick={prev}
-                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-border-subtle bg-white text-brand-ink hover:border-brand-blue/30"
+                className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border border-border-subtle bg-white text-brand-ink shadow-sm transition-all hover:border-brand-blue hover:bg-brand-blue-light/50 hover:text-brand-blue active:scale-95"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -80,7 +82,7 @@ export function TestimonialsSection() {
               <button
                 type="button"
                 onClick={next}
-                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-border-subtle bg-white text-brand-ink hover:border-brand-blue/30"
+                className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border border-border-subtle bg-white text-brand-ink shadow-sm transition-all hover:border-brand-blue hover:bg-brand-blue-light/50 hover:text-brand-blue active:scale-95"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="h-5 w-5" />

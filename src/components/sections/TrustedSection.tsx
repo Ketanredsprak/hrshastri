@@ -22,7 +22,7 @@ export function TrustedSection() {
         <RevealGroup className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
           {TRUSTED_LOGOS.map((name) => (
             <RevealItem key={name}>
-              <div className="flex h-[4.5rem] items-center justify-center rounded-2xl border border-border-subtle bg-surface-1 px-3 text-center text-[11px] font-semibold uppercase tracking-wide text-slate-500 transition hover:border-brand-blue/25 hover:bg-white hover:text-brand-ink md:text-xs">
+              <div className="flex h-[4.5rem] items-center justify-center rounded-2xl border border-border-subtle bg-surface-1 px-3 text-center text-[11px] font-semibold uppercase tracking-wide text-slate-500 transition-all duration-200 hover:-translate-y-1 hover:border-brand-blue/35 hover:bg-white hover:text-brand-ink hover:shadow-soft cursor-default md:text-xs">
                 {name}
               </div>
             </RevealItem>

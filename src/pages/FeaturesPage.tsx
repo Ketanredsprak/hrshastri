@@ -3,6 +3,7 @@ import { CORE_SERVICES } from '../data/features'
 import { HOW_IT_WORKS } from '../data/modules'
 import { PageHero } from '../components/marketing/PageHero'
 import { SEO } from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 import { FeaturesGridSection } from '../components/sections/FeaturesGridSection'
 import { Card } from '../components/ui/Card'
 import { Container } from '../components/ui/Container'
@@ -12,8 +13,10 @@ export default function FeaturesPage() {
   return (
     <>
       <SEO
-        title="Features"
-        description="Explore HR Shastri features: employee management, attendance, leave, Indian payroll, recruitment, performance, claims, timesheets, and mobile HR."
+        title={PAGE_SEO.features.title}
+        description={PAGE_SEO.features.description}
+        keywords={PAGE_SEO.features.keywords}
+        breadcrumbs={PAGE_SEO.features.breadcrumbs}
         path="/features"
       />
       <PageHero
@@ -48,7 +51,7 @@ export default function FeaturesPage() {
           />
           <div className="space-y-5">
             {HOW_IT_WORKS.map((item) => (
-              <Card key={item.title} variant="soft" className="!p-6 md:!p-8">
+              <Card key={item.title} variant="soft" className="!p-6 md:!p-8 transition-all duration-300 hover:bg-slate-100/90 hover:shadow-card cursor-default">
                 <h3 className="text-xl font-bold text-brand-ink">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">{item.description}</p>
                 <ul className="mt-4 space-y-2">

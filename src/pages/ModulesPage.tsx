@@ -1,14 +1,17 @@
 import { ModulesHero } from '../components/sections/ModulesHero'
 import { CtaBand } from '../components/marketing/CtaBand'
 import { SEO } from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 import { ModulesPageContent } from '../components/sections/ModulesPageContent'
 
 export default function ModulesPage() {
   return (
     <>
       <SEO
-        title="Modules"
-        description="HR Shastri modules: employee database, attendance, leave, payroll, recruitment, performance, expense claims, reports, and mobile app."
+        title={PAGE_SEO.modules.title}
+        description={PAGE_SEO.modules.description}
+        keywords={PAGE_SEO.modules.keywords}
+        breadcrumbs={PAGE_SEO.modules.breadcrumbs}
         path="/modules"
       />
       <ModulesHero />

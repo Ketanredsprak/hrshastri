@@ -1,13 +1,16 @@
 import { PageHero } from '../components/marketing/PageHero'
 import { SEO } from '../components/seo/SEO'
+import { PAGE_SEO } from '../data/seo-pages'
 import { ContactSection } from '../components/sections/ContactSection'
 
 export default function ContactPage() {
   return (
     <>
       <SEO
-        title="Contact"
-        description="Contact HR Shastri for demos, free trials, and support. Vadodara office, phone +91 915 707 5570, info@hrshastri.com."
+        title={PAGE_SEO.contact.title}
+        description={PAGE_SEO.contact.description}
+        keywords={PAGE_SEO.contact.keywords}
+        breadcrumbs={PAGE_SEO.contact.breadcrumbs}
         path="/contact"
       />
       <PageHero

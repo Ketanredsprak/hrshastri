@@ -8,9 +8,11 @@ import { TrustBar } from '../marketing/TrustBar'
 import { Badge } from '../ui/Badge'
 import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
+import { useContactRedirect } from '../../lib/contact-navigation'
 
 export function HeroSection() {
   const reduced = useReducedMotion()
+  const contactRedirect = useContactRedirect()
 
   return (
     <section className="hero-mesh relative overflow-hidden pb-12 pt-8 sm:pb-16 sm:pt-10 md:pb-24 md:pt-14">
@@ -48,7 +50,13 @@ export function HeroSection() {
               transition={easePremium}
               className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap"
             >
-              <Button to="/contact?intent=demo" size="lg" className="w-full sm:w-auto" data-cursor="Demo">
+              <Button
+                to="/#contact?intent=demo"
+                onClick={(e) => contactRedirect('demo', e)}
+                size="lg"
+                className="w-full sm:w-auto"
+                data-cursor="Demo"
+              >
                 Book a free demo
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Button>
