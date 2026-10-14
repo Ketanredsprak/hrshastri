@@ -55,6 +55,12 @@ export async function submitContactForm(payload: ContactPayload): Promise<void> 
     }
   }
 
+  // If running on a preview environment without PHP backend (e.g. Vercel preview URL):
+  if (typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')) {
+    console.info('[HR Shastri Preview Form Submission]', payload)
+    return
+  }
+
   throw new Error(lastError || 'Could not send your message. Please try again or call us.')
 }
 

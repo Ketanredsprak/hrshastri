@@ -1,11 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/api/contact-submit.php",
-      "destination": "/api/contact-submit"
-    },
-    {
-      "source": "/((?!api/|assets/|favicon\\.ico|robots\\.txt|sitemap\\.xml).*)",
+      "source": "/((?!assets/).*)",
       "destination": "/index.html"
     }
   ],
